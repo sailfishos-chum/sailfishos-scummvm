@@ -194,8 +194,14 @@ Categories:
 
 %build
 #%%configure --help
+
+# upstream sailfishos build recipe uses
+# LDFLAGS "-Wl,-rpath,/usr/share/org.scummvm.scummvm/lib"
+# so lets set up libdir accordingly.
+
 ./configure \
---prefix=%{_prefix} --exec-prefix=%{_prefix} --libdir=%{_libdir} \
+--prefix=%{_prefix} --exec-prefix=%{_prefix} \
+--libdir=%{_datadir}/%{orgname}/lib \
 --mandir=%{_mandir} \
 --host=sailfish \
 --opengl-mode=any \
