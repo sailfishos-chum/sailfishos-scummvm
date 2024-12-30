@@ -16,6 +16,15 @@
 
 %global orgname org.scummvm.scummvm
 
+%define config_opts_ext %{nil}
+%ifarch %ix86
+%define config_opts_ext --enable-ext-sse2
+%endif
+%ifarch %arm aarch64
+%define config_opts_ext --enable-ext-neon
+%endif
+
+
 Name:       scummvm
 Summary:    ScummVM
 Version:    2.9.0
@@ -208,12 +217,6 @@ Categories:
 --disable-tinygl \
 --disable-dependency-tracking \
 --disable-detection-full \
-%ifarch %ix86
---enable-ext-sse2 \
-%endif
-%ifarch %arm aarch64
---enable-ext-neon \
-%endif
 --enable-release \
 --enable-plugins \
 --default-dynamic \
@@ -232,6 +235,7 @@ Categories:
 --disable-discord \
 --disable-enet \
 %{engine_config} \
+%{config_opts_ext} \
 #--enable-dlc \
 #--enable-scummvmdlc \
 %{nil}
