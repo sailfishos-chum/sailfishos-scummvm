@@ -1,5 +1,5 @@
 [stream]
-exe = org.scummvm.wcummvm
+exe = org.scummvm.scummvm
 group = game
 
 [stream]
