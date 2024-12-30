@@ -16,6 +16,12 @@
 
 %global orgname org.scummvm.scummvm
 
+# upstream sailfishos build recipe uses
+# LDFLAGS "-Wl,-rpath,/usr/share/org.scummvm.scummvm/lib"
+# so lets set up libdir accordingly.
+# See configure below.
+%define _plugindir %{_datadir}/%{orgname}/lib
+
 %define config_opts_ext %{nil}
 %ifarch %ix86
 %define config_opts_ext --enable-ext-sse2
@@ -204,13 +210,9 @@ Categories:
 %build
 #%%configure --help
 
-# upstream sailfishos build recipe uses
-# LDFLAGS "-Wl,-rpath,/usr/share/org.scummvm.scummvm/lib"
-# so lets set up libdir accordingly.
-
 ./configure \
 --prefix=%{_prefix} --exec-prefix=%{_prefix} \
---libdir=%{_datadir}/%{orgname}/lib \
+--libdir=%{_plugindir} \
 --mandir=%{_mandir} \
 --host=sailfish \
 --opengl-mode=any \
@@ -282,7 +284,7 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %exclude %{_datadir}/%{orgname}/metainfo/org.scummvm.scummvm.metainfo.xml
 %exclude %{_datadir}/%{orgname}/pixmaps/org.scummvm.scummvm.xpm
 # default/common engines
-%dir %{_libdir}/scummvm/
+%dir %{_plugindir}/scummvm/
 
 %files data
 %dir %{_datadir}/%{orgname}
@@ -307,12 +309,12 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %exclude %{_datadir}/%{orgname}/scummvm/wwwroot.zip
 
 %files engines-one
-%{_libdir}/scummvm/libgrim.so
-%{_libdir}/scummvm/libkyra.so
-%{_libdir}/scummvm/liblure.so
-%{_libdir}/scummvm/libmm.so
-%{_libdir}/scummvm/libqueen.so
-%{_libdir}/scummvm/libsky.so
+%{_plugindir}/scummvm/libgrim.so
+%{_plugindir}/scummvm/libkyra.so
+%{_plugindir}/scummvm/liblure.so
+%{_plugindir}/scummvm/libmm.so
+%{_plugindir}/scummvm/libqueen.so
+%{_plugindir}/scummvm/libsky.so
 %{_datadir}/%{orgname}/scummvm/grim-patch.lab
 %{_datadir}/%{orgname}/scummvm/kyra.dat
 %{_datadir}/%{orgname}/scummvm/lure.dat
@@ -323,29 +325,29 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %{_datadir}/%{orgname}/scummvm/shaders/emi_*
 
 %files engines-two
-%{_libdir}/scummvm/libbladerunner.so
-%{_libdir}/scummvm/libdm.so
-%{_libdir}/scummvm/libdrascula.so
-%{_libdir}/scummvm/libgob.so
-%{_libdir}/scummvm/libgroovie.so
-%{_libdir}/scummvm/libmade.so
-%{_libdir}/scummvm/libmohawk.so
-%{_libdir}/scummvm/libmyst3.so
+%{_plugindir}/scummvm/libbladerunner.so
+%{_plugindir}/scummvm/libdm.so
+%{_plugindir}/scummvm/libdrascula.so
+%{_plugindir}/scummvm/libgob.so
+%{_plugindir}/scummvm/libgroovie.so
+%{_plugindir}/scummvm/libmade.so
+%{_plugindir}/scummvm/libmohawk.so
+%{_plugindir}/scummvm/libmyst3.so
 %{_datadir}/%{orgname}/scummvm/drascula.dat
 %{_datadir}/%{orgname}/scummvm/myst3.dat
 %{_datadir}/%{orgname}/scummvm/shaders/myst3_*
 
 %files engines-three
-%{_libdir}/scummvm/libsaga.so
-%{_libdir}/scummvm/libstark.so
-%{_libdir}/scummvm/libsword1.so
-%{_libdir}/scummvm/libsword2.so
-%{_libdir}/scummvm/libsword25.so
-%{_libdir}/scummvm/libtinsel.so
-%{_libdir}/scummvm/libtitanic.so
-%{_libdir}/scummvm/libtsage.so
-%{_libdir}/scummvm/libtwine.so
-%{_libdir}/scummvm/libultima.so
+%{_plugindir}/scummvm/libsaga.so
+%{_plugindir}/scummvm/libstark.so
+%{_plugindir}/scummvm/libsword1.so
+%{_plugindir}/scummvm/libsword2.so
+%{_plugindir}/scummvm/libsword25.so
+%{_plugindir}/scummvm/libtinsel.so
+%{_plugindir}/scummvm/libtitanic.so
+%{_plugindir}/scummvm/libtsage.so
+%{_plugindir}/scummvm/libtwine.so
+%{_plugindir}/scummvm/libultima.so
 %{_datadir}/%{orgname}/scummvm/residualvm.zip
 %{_datadir}/%{orgname}/scummvm/titanic.dat
 %{_datadir}/%{orgname}/scummvm/ultima.dat
