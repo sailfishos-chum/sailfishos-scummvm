@@ -1,0 +1,21 @@
+commit 3e00446207e5b1bb5ad539a0d046f5541ec0f75d
+Author: nephros <nemo@pgxperiiia10>
+Date:   Mon Dec 30 16:13:26 2024 +0100
+
+    SailfishOS: adapt define in header
+
+diff --git a/backends/platform/sdl/sailfish/sailfish-window.h b/backends/platform/sdl/sailfish/sailfish-window.h
+index b30a7c33857..d6d3500c1c7 100644
+--- a/backends/platform/sdl/sailfish/sailfish-window.h
++++ b/backends/platform/sdl/sailfish/sailfish-window.h
+@@ -19,8 +19,8 @@
+  *
+  */
+ 
+-#ifndef BACKENDS_PLATFORM_SDL_MACOSX_MACOSX_WINDOW_H
+-#define BACKENDS_PLATFORM_SDL_MACOSX_MACOSX_WINDOW_H
++#ifndef BACKENDS_PLATFORM_SDL_SAILFISHOS_MACOSX_WINDOW_H
++#define BACKENDS_PLATFORM_SDL_SAILFISHOS_MACOSX_WINDOW_H
+ 
+ #include "backends/platform/sdl/sdl-window.h"
+ 

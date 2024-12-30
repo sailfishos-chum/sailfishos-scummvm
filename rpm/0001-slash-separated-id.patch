@@ -1,0 +1,26 @@
+commit 14a5a4bf48d72088079cd34447e2d8311652cca5
+Author: nephros <nemo@pgxperiiia10>
+Date:   Mon Dec 30 16:07:31 2024 +0100
+
+    SailfishOS: Use slash-separated app name
+    
+    Not sure why that distinction was made, but when Sailjail is in use, the
+    slash separation is okay.
+
+diff --git a/backends/platform/sdl/sailfish/sailfish.cpp b/backends/platform/sdl/sailfish/sailfish.cpp
+index 4022ac38e56..0996c130387 100644
+--- a/backends/platform/sdl/sailfish/sailfish.cpp
++++ b/backends/platform/sdl/sailfish/sailfish.cpp
+@@ -66,11 +66,7 @@ void OSystem_SDL_Sailfish::init() {
+ }
+ 
+ Common::String OSystem_SDL_Sailfish::getAppSuffix() {
+-	if (_isAuroraOS) {
+-		return ORG_NAME "/" APP_NAME;
+-	} else {
+-		return ORG_NAME "." APP_NAME;
+-	}
++	return ORG_NAME "/" APP_NAME;
+ }
+ 
+ void OSystem_SDL_Sailfish::initBackend() {

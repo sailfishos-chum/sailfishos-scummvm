@@ -39,6 +39,9 @@ License:    GPLv3+
 URL:        https://www.scummvm.org
 Source0:    %{name}-%{version}.tar.xz
 Source1:    scummvm.xpolicy
+Patch1:     0001-slash-separated-id.patch
+Patch2:     0002-adapt-define-in-header.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
@@ -205,7 +208,7 @@ Categories:
 
 
 %prep
-%autosetup -n %{name}-%{version}/upstream
+%autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
 #%%configure --help
@@ -248,7 +251,9 @@ Categories:
 %make_install
 
 rm -rf %{buildroot}%{_mandir}
+# note that the configure script hard-codes this for sailfishos
 rm -rf %{buildroot}%{_datadir}/%{orgname}/doc
+
 mkdir -p %{buildroot}/usr/share/applications
 mkdir -p %{buildroot}/usr/share/icons/hicolor/86x86/apps
 mkdir -p %{buildroot}/usr/share/icons/hicolor/108x108/apps
