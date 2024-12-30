@@ -1,0 +1,7 @@
+[stream]
+exe = org.scummvm.wcummvm
+group = game
+
+[stream]
+property = application.name@equals:"ScummVM"
+group = game
