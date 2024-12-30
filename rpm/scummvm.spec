@@ -5,8 +5,9 @@
 %define sub_engines scumm-7-8,he,agos2,sci32,groovie2,lol,eob,mm1,xeen,ihnm,ultima1,ultima4,ultima6,ultima8,cstime,myst,mystme,riven
 %define common_engines grim,kyra,mm,lure,sky,queen
 %define extra_engines_1 bladerunner,dm,drascula,gob,groovie,made,mohawk,myst3
-%define extra_engines_2 saga,stark,sword1,sword2,sword25,tinsel,titanic,tsage,twine,ultima
-%define dynamic_engines %{common_engines},%{extra_engines_1},%{extra_engines_2}
+%define extra_engines_2 saga,stark,sword1,sword2,sword25,tinsel,titanic,tsage,twine
+%define extra_engines_3 ultima
+%define dynamic_engines %{common_engines},%{extra_engines_1},%{extra_engines_2},%{extra_engines_3}
 
 # build almost everything:
 #%%define engine_config --disable-all-unstable-engines --disable-engine=%%{disabled_engines} --enable-engine-static=%%{builtin_engines}
@@ -190,6 +191,21 @@ Categories:
   - Emulator
 %endif
 
+%package engines-four
+Summary:    Additional engine plugins for ScummVM
+Requires:   %{name} = %{version}-%{release}
+
+%description engines-four
+This package contains the following engine plugins: %{extra_engines_3}
+
+%if "%{?vendor}" == "chum"
+Title: ScummVM Engines IV
+Type: addon
+Categories:
+  - Game
+  - Emulator
+%endif
+
 %package fonts-cjk
 Summary:   CJK fonts for ScummVM
 BuildArch: noarch
@@ -352,12 +368,14 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %{_plugindir}/scummvm/libtitanic.so
 %{_plugindir}/scummvm/libtsage.so
 %{_plugindir}/scummvm/libtwine.so
-%{_plugindir}/scummvm/libultima.so
 %{_datadir}/%{orgname}/scummvm/residualvm.zip
 %{_datadir}/%{orgname}/scummvm/titanic.dat
+%{_datadir}/%{orgname}/scummvm/shaders/stark_*
+
+%files engines-four
+%{_plugindir}/scummvm/libultima.so
 %{_datadir}/%{orgname}/scummvm/ultima.dat
 %{_datadir}/%{orgname}/scummvm/ultima8.dat
-%{_datadir}/%{orgname}/scummvm/shaders/stark_*
 
 %files fonts-cjk
 %{_datadir}/%{orgname}/scummvm/fonts-cjk.dat
