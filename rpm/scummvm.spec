@@ -20,7 +20,7 @@ Name:       scummvm
 Summary:    ScummVM
 Version:    2.9.0
 Release:    1
-License:    GPLv2
+License:    GPLv3+
 URL:        https://www.scummvm.org
 Source0:    %{name}-%{version}.tar.xz
 Source1:    scummvm.xpolicy
@@ -67,10 +67,10 @@ BuildRequires: pkgconfig(wayland-scanner)
 BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(libpulse-simple)
 
-#%%if "%%{?vendor}" == "chum"
+%if "%{?vendor}" == "chum"
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(libmpeg2)
-#%%endif
+%endif
 
 Requires:   scummvm-data
 
@@ -190,10 +190,10 @@ Categories:
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -n %{name}-%{version}/upstream
 
 %build
-%configure --help
+#%%configure --help
 ./configure \
 --prefix=%{_prefix} --exec-prefix=%{_prefix} --libdir=%{_libdir} \
 --mandir=%{_mandir} \
