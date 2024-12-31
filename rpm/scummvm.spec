@@ -438,13 +438,16 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %{_datadir}/%{orgname}/scummvm/shaders/stark_*
 
 %files engines-iv
-%{_plugindir}/scummvm/glk.so
-%{_plugindir}/scummvm/hugo.so
-%{_plugindir}/scummvm/mads.so
-%{_plugindir}/scummvm/sherlock.so
-%{_plugindir}/scummvm/toltecs.so
-%{_plugindir}/scummvm/wintermute.so
-%{_plugindir}/scummvm/zvision.so
+%{_plugindir}/scummvm/libglk.so
+%{_plugindir}/scummvm/libhugo.so
+%{_plugindir}/scummvm/libmads.so
+%{_plugindir}/scummvm/libsherlock.so
+%{_plugindir}/scummvm/libtoltecs.so
+%{_plugindir}/scummvm/libwintermute.so
+%{_plugindir}/scummvm/libzvision.so
+%{_datadir}/%{orgname}/scummvm/hugo.dat
+%{_datadir}/%{orgname}/scummvm/wintermute.zip
+%{_datadir}/%{orgname}/scummvm/shaders/wme_*
 
 %files engines-ultima
 %{_plugindir}/scummvm/libultima.so
