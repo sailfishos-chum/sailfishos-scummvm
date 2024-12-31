@@ -93,6 +93,7 @@ BuildRequires: pkgconfig(libpulse-simple)
 %if "%{?vendor}" == "chum"
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(libmpeg2)
+BuildRequires:  pkgconfig(libmikmod)
 %endif
 
 Requires:   scummvm-data
