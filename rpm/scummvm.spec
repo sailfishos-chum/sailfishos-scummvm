@@ -1,13 +1,17 @@
-%define disabled_engines testbed,playground3d,access,zvision,wintermute
-#%%define builtin_engines scumm
+%define disabled_engines testbed,playground3d,access
+# build most popular/famous engines into the binary:
 %define builtin_engines agi,agos,sci,scumm
 # if --disable-all-engines is used, we need to enable sub engines manually:
 %define sub_engines scumm-7-8,he,agos2,sci32,groovie2,lol,eob,mm1,xeen,ihnm,ultima1,ultima4,ultima6,ultima8,cstime,myst,mystme,riven
-%define common_engines grim,kyra,mm,lure,sky,queen
-%define extra_engines_1 bladerunner,dm,drascula,gob,groovie,made,mohawk,myst3
-%define extra_engines_2 saga,stark,sword1,sword2,sword25,tinsel,titanic,tsage,twine
-%define extra_engines_3 ultima
-%define dynamic_engines %{common_engines},%{extra_engines_1},%{extra_engines_2},%{extra_engines_3}
+
+# Split other engines and data up into packages
+# goal: ~5MB per package
+%define engines_1 grim,kyra,mm,lure,sky,queen
+%define engines_2 bladerunner,dm,drascula,gob,groovie,made,mohawk,myst3
+%define engines_3 saga,stark,sword1,sword2,sword25,tinsel,titanic,tsage,twine
+%define engines_4 glk,hugo,mads,sherlock,toltecs,wintermute,zvision
+# separate packages because of size: ultima
+%define dynamic_engines %{engines_1},%{engines_2},%{engines_3},%{engines_4},ultima
 
 # build almost everything:
 #%%define engine_config --disable-all-unstable-engines --disable-engine=%%{disabled_engines} --enable-engine-static=%%{builtin_engines}
@@ -104,7 +108,16 @@ Entertainment's children's SCUMM games (including Freddi Fish and Putt Putt
 games) and many more.
 
 This package has the following engines built-in: %{builtin_engines}.
-Other engines are packaged separately.
+Other engines are packaged separately:
+
+Engines I:   %engines_1
+Engines II:  %engines_2
+Engines III: %engines_3
+Engines IV:  %engines_4
+Ultima engine
+
+See https://wiki.scummvm.org/index.php?title=Engines for details about engines
+and game support.
 
 # https://github.com/sailfishos-chum/main/blob/main/Metadata.md
 %if "%{?vendor}" == "chum"
@@ -144,14 +157,15 @@ Type: addon
 Categories:
   - Game
   - Emulator
+PackageIcon: https://scummvm.org/images/scummvm_logo.png
 %endif
 
-%package engines-one
+%package engines-i
 Summary:    Engine plugins for ScummVM
 Requires:   %{name} = %{version}-%{release}
 
-%description engines-one
-This package contains the following engine plugins: %{common_engines}
+%description engines-i
+This package contains the following engine plugins: %{engines_1}
 
 %if "%{?vendor}" == "chum"
 Title: ScummVM Engines I
@@ -159,14 +173,22 @@ Type: addon
 Categories:
   - Game
   - Emulator
+PackageIcon: https://scummvm.org/images/scummvm_logo.png
+Screenshots:
+  - https://scummvm.org/data/screenshots/grim/grim/grim_win_en_1_2_full.png
+  - https://scummvm.org/data/screenshots/kyra/kyra1/kyra1_dos_en_1_1_full.png
+  - https://scummvm.org/data/screenshots/mm/mm1/mm1_dos_en_1_1_full.png
+  - https://scummvm.org/data/screenshots/lure/lure/lure_dos_en_1_3_full.png
+  - https://scummvm.org/data/screenshots/sky/sky/sky_dos_en_1_1_full.png
+  - https://scummvm.org/data/screenshots/queen/queen/queen_amiga_en_1_3_full.png
 %endif
 
-%package engines-two
-Summary:    Additional engine plugins for ScummVM
+%package engines-ii
+Summary:    Engine plugins for ScummVM
 Requires:   %{name} = %{version}-%{release}
 
-%description engines-two
-This package contains the following engine plugins: %{extra_engines_1}
+%description engines-ii
+This package contains the following engine plugins: %{engines_2}
 
 %if "%{?vendor}" == "chum"
 Title: ScummVM Engines II
@@ -174,14 +196,23 @@ Type: addon
 Categories:
   - Game
   - Emulator
+PackageIcon: https://scummvm.org/images/scummvm_logo.png
+Screenshots:
+  - https://scummvm.org/data/screenshots/bladerunner/bladerunner/bladerunner_win_en_1_1_full.png
+  - https://upload.wikimedia.org/wikipedia/en/2/2b/Dungeon_Master_Gameplay_Screenshot.png
+  - https://scummvm.org/data/screenshots/gob/gob1/gob1_dos_en_1_4_full.png
+  - https://scummvm.org/data/screenshots/groovie/t7g/t7g_dos_en_1_2_full.png
+  - https://scummvm.org/data/screenshots/made/lgop2/lgop2_dos_en_1_2_full.png
+  - https://scummvm.org/data/screenshots/myst3/myst3/myst3_win_en_1_0_full.png
+  - https://scummvm.org/data/screenshots/mohawk/mystme/mystme_win_de_1_2_full.png
 %endif
 
-%package engines-three
-Summary:    Additional engine plugins for ScummVM
+%package engines-iii
+Summary:    Engine plugins for ScummVM
 Requires:   %{name} = %{version}-%{release}
 
-%description engines-three
-This package contains the following engine plugins: %{extra_engines_2}
+%description engines-iii
+This package contains the following engine plugins: %{engines_3}
 
 %if "%{?vendor}" == "chum"
 Title: ScummVM Engines III
@@ -189,14 +220,21 @@ Type: addon
 Categories:
   - Game
   - Emulator
+PackageIcon: https://scummvm.org/images/scummvm_logo.png
+Screenshots:
+  - https://scummvm.org/data/screenshots/sword1/sword1/sword1_win_de_1_3_full.png
+  - https://scummvm.org/data/screenshots/sword25/sword25/sword25_win_de_1_10_full.png
+  - https://scummvm.org/data/screenshots/stark/tlj/tlj_win_en_1_0_full.png
+  - https://scummvm.org/data/screenshots/titanic/titanic/titanic_win_en_1_2_full.png
+  - https://scummvm.org/data/screenshots/tinsel/dw/dw_dos_en_1_1_full.png
 %endif
 
-%package engines-four
-Summary:    Additional engine plugins for ScummVM
+%package engines-iv
+Summary:    Engine plugins for ScummVM
 Requires:   %{name} = %{version}-%{release}
 
-%description engines-four
-This package contains the following engine plugins: %{extra_engines_3}
+%description engines-iv
+This package contains the following engine plugins: %{engines_4}
 
 %if "%{?vendor}" == "chum"
 Title: ScummVM Engines IV
@@ -204,6 +242,31 @@ Type: addon
 Categories:
   - Game
   - Emulator
+PackageIcon: https://scummvm.org/images/scummvm_logo.png
+Screenshots:
+  - https://scummvm.org/data/screenshots/toltecs/toltecs/toltecs_dos_en_1_6_full.png
+  - https://scummvm.org/data/screenshots/sherlock/rosetattoo/rosetattoo_dos_de_1_13_full.png
+  - https://scummvm.org/data/screenshots/zvision/znemesis/znemesis_dos_de_1_13_full.png
+%endif
+
+%package engines-ultima
+Summary:    Engine plugins for ScummVM
+Requires:   %{name} = %{version}-%{release}
+
+%description engines-ultima
+This package contains the following engine plugins: ultima
+
+%if "%{?vendor}" == "chum"
+Title: ScummVM Ultima Engine
+Type: addon
+Categories:
+  - Game
+  - Emulator
+PackageIcon: https://scummvm.org/images/scummvm_logo.png
+Screenshots:
+  - https://scummvm.org/data/screenshots/ultima/ultima4/ultima4_dos_en_1_1_full.png
+  - https://scummvm.org/data/screenshots/ultima/ultima6/ultima6_dos_en_1_2_full.png
+  - https://scummvm.org/data/screenshots/ultima/ultima8/ultima8_dos_en_2_1_full.png
 %endif
 
 %package fonts-cjk
@@ -217,6 +280,7 @@ Chinese, Japanese, and Korean fonts for ScummVM
 %if "%{?vendor}" == "chum"
 Title: ScummVM CJK Fonts
 Type: addon
+PackageIcon: https://scummvm.org/images/scummvm_logo.png
 Categories:
   - Game
   - Emulator
@@ -329,7 +393,7 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %exclude %{_datadir}/%{orgname}/scummvm/macgui.dat
 %exclude %{_datadir}/%{orgname}/scummvm/wwwroot.zip
 
-%files engines-one
+%files engines-i
 %{_plugindir}/scummvm/libgrim.so
 %{_plugindir}/scummvm/libkyra.so
 %{_plugindir}/scummvm/liblure.so
@@ -345,7 +409,7 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %{_datadir}/%{orgname}/scummvm/shaders/grim_*
 %{_datadir}/%{orgname}/scummvm/shaders/emi_*
 
-%files engines-two
+%files engines-ii
 %{_plugindir}/scummvm/libbladerunner.so
 %{_plugindir}/scummvm/libdm.so
 %{_plugindir}/scummvm/libdrascula.so
@@ -358,7 +422,7 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %{_datadir}/%{orgname}/scummvm/myst3.dat
 %{_datadir}/%{orgname}/scummvm/shaders/myst3_*
 
-%files engines-three
+%files engines-iii
 %{_plugindir}/scummvm/libsaga.so
 %{_plugindir}/scummvm/libstark.so
 %{_plugindir}/scummvm/libsword1.so
@@ -372,7 +436,16 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %{_datadir}/%{orgname}/scummvm/titanic.dat
 %{_datadir}/%{orgname}/scummvm/shaders/stark_*
 
-%files engines-four
+%files engines-iv
+%{_plugindir}/scummvm/glk.so
+%{_plugindir}/scummvm/hugo.so
+%{_plugindir}/scummvm/mads.so
+%{_plugindir}/scummvm/sherlock.so
+%{_plugindir}/scummvm/toltecs.so
+%{_plugindir}/scummvm/wintermute.so
+%{_plugindir}/scummvm/zvision.so
+
+%files engines-ultima
 %{_plugindir}/scummvm/libultima.so
 %{_datadir}/%{orgname}/scummvm/ultima.dat
 %{_datadir}/%{orgname}/scummvm/ultima8.dat
