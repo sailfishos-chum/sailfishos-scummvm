@@ -1,0 +1,16 @@
+diff --git a/dists/sailfish/org.scummvm.scummvm.desktop b/dists/sailfish/org.scummvm.scummvm.desktop
+index 9d4f4f03..af3a4896 100644
+--- a/dists/sailfish/org.scummvm.scummvm.desktop
++++ b/dists/sailfish/org.scummvm.scummvm.desktop
+@@ -14,6 +14,11 @@ Categories=Game;AdventureGame;
+ X-Nemo-Application-Type=no-invoker
+ X-Desktop-File-Install-Version=0.26
+ 
++[X-Sailjail]
++Permissions=UserDirs;RemovableMedia;Internet;Audio
++OrganizationName=org.scummvm
++ApplicationName=scummvm
++
+ [X-Application]
+ Permissions=UserDirs;RemovableMedia;Internet;Audio
+ OrganizationName=org.scummvm

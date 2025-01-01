@@ -46,6 +46,7 @@ Source0:    %{name}-%{version}.tar.xz
 Source1:    scummvm.xpolicy
 Patch1:     0001-slash-separated-id.patch
 Patch2:     0002-adapt-define-in-header.patch
+Patch3:     0003-desktop-sailjail.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -346,15 +347,6 @@ cp dists/sailfish/128x128.png %{buildroot}/usr/share/icons/hicolor/128x128/apps/
 cp dists/sailfish/172x172.png %{buildroot}/usr/share/icons/hicolor/172x172/apps/org.scummvm.scummvm.png
 
 cp dists/sailfish/org.scummvm.scummvm.desktop %{buildroot}/usr/share/applications/org.scummvm.scummvm.desktop
-# FIXME
-# Does the shipped X-Application key work with Sailjail??
-sed -i -e 's/X-Application/X-Sailjail/g' %{buildroot}/usr/share/applications/org.scummvm.scummvm.desktop
-# Custom Sailjail setup:
-#printf '\n[X-Sailjail]\n' >> %%{buildroot}/usr/share/applications/org.scummvm.scummvm.desktop
-#printf 'Sandboxing=Disabled\n' >> %%{buildroot}/usr/share/applications/org.scummvm.scummvm.desktop
-#printf 'Permissions=Bluetooth;Downloads;PublicDir;RemovableMedia\n' >> %%{buildroot}/usr/share/applications/org.scummvm.scummvm.desktop
-#printf "OrganizationName=%%{orgname}\n" >> %%{buildroot}/usr/share/applications/org.scummvm.scummvm.desktop
-#printf 'ApplicationName=scummvm\n' >> %%{buildroot}/usr/share/applications/org.scummvm.scummvm.desktop
 
 mkdir -p %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/
 cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
