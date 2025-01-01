@@ -110,12 +110,17 @@ Entertainment's children's SCUMM games (including Freddi Fish and Putt Putt
 games) and many more.
 
 This package has the following engines built-in: %{builtin_engines}.
+
 Other engines are packaged separately:
 
 Engines I:   %engines_1
+
 Engines II:  %engines_2
+
 Engines III: %engines_3
+
 Engines IV:  %engines_4
+
 Ultima engine
 
 See https://wiki.scummvm.org/index.php?title=Engines for details about engines
@@ -124,6 +129,7 @@ and game support.
 # https://github.com/sailfishos-chum/main/blob/main/Metadata.md
 %if "%{?vendor}" == "chum"
 Title: ScummVM
+Type: desktop-application
 PackagedBy: nephros
 Categories:
   - Game
@@ -169,9 +175,12 @@ Requires:   %{name} = %{version}-%{release}
 %description engines-i
 This package contains the following engine plugins: %{engines_1}
 
+See https://wiki.scummvm.org/index.php?title=Engines for details about engines
+and game support.
+
 %if "%{?vendor}" == "chum"
 Title: ScummVM Engines I
-Type: addon
+Type: desktop-application
 Categories:
   - Game
   - Emulator
@@ -192,9 +201,13 @@ Requires:   %{name} = %{version}-%{release}
 %description engines-ii
 This package contains the following engine plugins: %{engines_2}
 
+See https://wiki.scummvm.org/index.php?title=Engines for details about engines
+and game support.
+
+
 %if "%{?vendor}" == "chum"
 Title: ScummVM Engines II
-Type: addon
+Type: desktop-application
 Categories:
   - Game
   - Emulator
@@ -216,9 +229,13 @@ Requires:   %{name} = %{version}-%{release}
 %description engines-iii
 This package contains the following engine plugins: %{engines_3}
 
+See https://wiki.scummvm.org/index.php?title=Engines for details about engines
+and game support.
+
+
 %if "%{?vendor}" == "chum"
 Title: ScummVM Engines III
-Type: addon
+Type: desktop-application
 Categories:
   - Game
   - Emulator
@@ -238,9 +255,13 @@ Requires:   %{name} = %{version}-%{release}
 %description engines-iv
 This package contains the following engine plugins: %{engines_4}
 
+See https://wiki.scummvm.org/index.php?title=Engines for details about engines
+and game support.
+
+
 %if "%{?vendor}" == "chum"
 Title: ScummVM Engines IV
-Type: addon
+Type: desktop-application
 Categories:
   - Game
   - Emulator
@@ -258,9 +279,13 @@ Requires:   %{name} = %{version}-%{release}
 %description engines-ultima
 This package contains the following engine plugins: ultima
 
+See https://wiki.scummvm.org/index.php?title=Engines for details about engines
+and game support.
+
+
 %if "%{?vendor}" == "chum"
 Title: ScummVM Ultima Engine
-Type: addon
+Type: desktop-application
 Categories:
   - Game
   - Emulator
