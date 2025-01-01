@@ -37,7 +37,7 @@
 
 
 Name:       scummvm
-Summary:    ScummVM
+Summary:    An interpreter for graphic adventure games
 Version:    2.9.0
 Release:    1
 License:    GPLv3+
@@ -362,7 +362,7 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %files
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
-%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
+%config %{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 #%%{_datadir}/icons/hicolor/scalable/apps/*svg
 %{_datadir}/icons/hicolor/*/apps/*.png
 %exclude %{_datadir}/%{orgname}/applications/org.scummvm.scummvm.desktop
