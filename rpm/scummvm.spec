@@ -44,9 +44,11 @@ License:    GPLv3+
 URL:        https://www.scummvm.org
 Source0:    %{name}-%{version}.tar.xz
 Source1:    scummvm.xpolicy
+Source2:    scummvm.ini
 Patch1:     0001-slash-separated-id.patch
 Patch2:     0002-adapt-define-in-header.patch
 Patch3:     0003-desktop-sailjail.patch
+Patch4:     0004-desktop-inifile.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -376,9 +378,13 @@ cp dists/sailfish/org.scummvm.scummvm.desktop %{buildroot}/usr/share/application
 mkdir -p %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/
 cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 
+mkdir -p %{buildroot}%{_sysconfdir}/scummvm/
+cp %{S:2} %{buildroot}%{_sysconfdir}/scummvm/scummvm.ini
+
 %files
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
+%config(noreplace) %{_sysconfdir}/scummvm/scummvm.ini
 %config %{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 #%%{_datadir}/icons/hicolor/scalable/apps/*svg
 %{_datadir}/icons/hicolor/*/apps/*.png
