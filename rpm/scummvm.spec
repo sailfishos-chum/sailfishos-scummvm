@@ -393,8 +393,11 @@ cp %{S:2} %{buildroot}%{_sysconfdir}/scummvm/scummvm.ini
 %exclude %{_datadir}/%{orgname}/icons/hicolor/scalable/apps/org.scummvm.scummvm.svg
 %exclude %{_datadir}/%{orgname}/metainfo/org.scummvm.scummvm.metainfo.xml
 %exclude %{_datadir}/%{orgname}/pixmaps/org.scummvm.scummvm.xpm
-# default/common engines
 %dir %{_plugindir}/scummvm/
+%if "%{?vendor}" == "chum"
+# if fluidsynth is enabled, it builds this:
+%{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2
+%endif
 
 %files data
 %dir %{_datadir}/%{orgname}
