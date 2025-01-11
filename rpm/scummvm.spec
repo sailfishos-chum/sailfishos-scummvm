@@ -325,7 +325,7 @@ Categories:
 Summary:   Roland SC-55 soundfont from ScummVM
 BuildArch: noarch
 
-%description soundfont-roland-sc55
+%description -n soundfont-roland-sc55
 Roland SC-55 soundfont from ScummVM
 
 Title: Roland SC-55 soundfont
@@ -506,6 +506,6 @@ mv %{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2 %{buildroot}%{_datadir}/sound
 %{_datadir}/%{orgname}/scummvm/fonts-cjk.dat
 
 %if "%{?vendor}" == "chum"
-%files soundfont-roland-sc55
+%files -n soundfont-roland-sc55
 %{_datadir}/sounds/sf2/Roland_SC-55.sf2
 %endif
