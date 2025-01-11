@@ -442,6 +442,7 @@ done
 mkdir -p %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/
 cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 
+
 mkdir -p %{buildroot}%{_sysconfdir}/scummvm/
 cp %{S:2} %{buildroot}%{_sysconfdir}/scummvm/scummvm.ini
 
@@ -449,6 +450,31 @@ cp %{S:2} %{buildroot}%{_sysconfdir}/scummvm/scummvm.ini
 # built when FluidSynth was found:
 mkdir -p %{buildroot}%{_datadir}/sounds/sf2
 mv %{buildroot}%{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2 %{buildroot}%{_datadir}/sounds/sf2/Roland_SC-55.sf2
+%endif
+
+
+# Super duper hack on chum: read the log of our own build process:
+%if "%{?vendor}" == "chum"
+printf "This build of ScummVM includes the following engines:\n\n" > %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "The following engines are built-in: %{builtin_engines}." >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "These engines are packaged separately:\n\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "Engines I:   %{engines_1}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "Engines II:  %{engines_2}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "Engines III: %{engines_3}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "Engines IV:  %{engines_4}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "Ultima engine\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "\nThe above will include the following sub-engines: %{sub_engines}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "\nSee https://wiki.scummvm.org/index.php?title=Engines for details about engines and game support.\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+
+TOKEN1="Engines..builtin.:"
+TOKEN2="Creating.engines\/engines.mk"
+if [ -r %{_logdir}/build.log ]; then
+  cat %{_logdir}/build.log | sed -n "/$TOKEN1/,/$TOKEN2/p" | sed -e "/$TOKEN1/d" -e "/$TOKEN2/d" | sed 's/^\[.*\]//' >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+elif [ -r //.build.log ]; then
+  cat //.build.log         | sed -n "/$TOKEN1/,/$TOKEN2/p" | sed -e "/$TOKEN1/d" -e "/$TOKEN2/d" | sed 's/^\[.*\]//' >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+else
+  printf "\nCould not get more info, please refer to the build log.\n\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+fi
 %endif
 
 %if "%{?scummvm_quick}" == "die-install"
@@ -470,6 +496,7 @@ exit 1
 %exclude %{_datadir}/%{orgname}/pixmaps/org.scummvm.scummvm.xpm
 %dir %{_plugindir}/scummvm/
 %if "%{?vendor}" == "chum"
+%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 %endif
 
 %files data
