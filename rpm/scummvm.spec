@@ -97,6 +97,7 @@ BuildRequires: pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(libmpeg2)
 BuildRequires:  pkgconfig(libmikmod)
+BuildRequires:  pkgconfig(fluidsynth)
 %endif
 
 Requires:   scummvm-data
