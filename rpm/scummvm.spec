@@ -118,7 +118,8 @@ BuildRequires: pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(libmpeg2)
 BuildRequires:  pkgconfig(libmikmod)
-BuildRequires:  pkgconfig(fluidsynth)
+#BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(fluidlite)
 %endif
 
 Requires:   scummvm-data
@@ -395,6 +396,8 @@ echo QUICK BUILD REQUEST. Defined minimal engine config. Packaging will likely f
 --disable-discord \
 --disable-enet \
 --enable-scummvmdlc \
+--disable-fluidsynth \
+--enable-fluidlite \
 %{config_opts_ext} \
 %{engine_config} \
  | /usr/bin/tee configure_output.txt
