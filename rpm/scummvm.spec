@@ -158,6 +158,9 @@ Links:
 Summary:   Core data files for ScummVM
 BuildArch: noarch
 Requires:   %{name} = %{version}-%{release}
+%if "%{?vendor}" == "chum"
+Requires:   soundfont-roland-sc55
+%endif
 
 %description data
 %{summary}.
@@ -317,6 +320,21 @@ Categories:
 %endif
 
 
+%if "%{?vendor}" == "chum"
+%package -n soundfont-roland-sc55
+Summary:   Roland SC-55 soundfont from ScummVM
+BuildArch: noarch
+
+%description soundfont-roland-sc55
+Roland SC-55 soundfont from ScummVM
+
+Title: Roland SC-55 soundfont
+Type: addon
+Categories:
+  - Audio
+%endif
+
+
 %prep
 %autosetup -p1 -n %{name}-%{version}/upstream
 
@@ -382,6 +400,11 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 mkdir -p %{buildroot}%{_sysconfdir}/scummvm/
 cp %{S:2} %{buildroot}%{_sysconfdir}/scummvm/scummvm.ini
 
+%if "%{?vendor}" == "chum"
+mkdir -p %{buildroot}%{_datadir}/sounds/sf2
+mv %{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2 %{buildroot}%{_datadir}/sounds/sf2/Roland_SC-55.sf2
+%endif
+
 %files
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
@@ -395,8 +418,6 @@ cp %{S:2} %{buildroot}%{_sysconfdir}/scummvm/scummvm.ini
 %exclude %{_datadir}/%{orgname}/pixmaps/org.scummvm.scummvm.xpm
 %dir %{_plugindir}/scummvm/
 %if "%{?vendor}" == "chum"
-# if fluidsynth is enabled, it builds this:
-%{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2
 %endif
 
 %files data
@@ -484,3 +505,7 @@ cp %{S:2} %{buildroot}%{_sysconfdir}/scummvm/scummvm.ini
 %files fonts-cjk
 %{_datadir}/%{orgname}/scummvm/fonts-cjk.dat
 
+%if "%{?vendor}" == "chum"
+%files soundfont-roland-sc55
+%{_datadir}/sounds/sf2/Roland_SC-55.sf2
+%endif
