@@ -437,7 +437,7 @@ if [ -r %{_logdir}/build.log ]; then
 elif [ -r //.build.log ]; then
   cat //.build.log         | sed -n "/$TOKEN1/,/$TOKEN2/p" | sed -e "/$TOKEN1/d" -e "/$TOKEN2/d" | sed 's/^\[.*\]//' >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 else
-  printf "\nCould not get more info, please refer to the build log.\n\n" > %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+  printf "\nCould not get more info, please refer to the build log.\n\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 fi
 %endif
 
