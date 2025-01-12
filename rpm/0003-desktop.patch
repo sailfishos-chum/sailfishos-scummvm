@@ -1,5 +1,5 @@
 diff --git a/dists/sailfish/org.scummvm.scummvm.desktop b/dists/sailfish/org.scummvm.scummvm.desktop
-index 9d4f4f03..ae4586e6 100644
+index 9d4f4f03..4f1a8eab 100644
 --- a/dists/sailfish/org.scummvm.scummvm.desktop
 +++ b/dists/sailfish/org.scummvm.scummvm.desktop
 @@ -7,13 +7,18 @@ Comment[he]=פרשן למספר משחקי הרפתקאות
@@ -7,8 +7,9 @@ index 9d4f4f03..ae4586e6 100644
  Comment[es]=Intérprete para varias aventuras gráficas
  Comment[ca]=Intèrpret per diverses aventures gràfiques
 -Exec=/usr/bin/org.scummvm.scummvm
+-Icon=org.scummvm.scummvm
 +Exec=/usr/bin/org.scummvm.scummvm -initial-cfg=/etc/scummvm/scummvm.ini
- Icon=org.scummvm.scummvm
++Icon=icon-launcher-scummvm
  Type=Application
  Categories=Game;AdventureGame;
  X-Nemo-Application-Type=no-invoker

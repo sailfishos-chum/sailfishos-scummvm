@@ -45,6 +45,7 @@ URL:        https://www.scummvm.org
 Source0:    %{name}-%{version}.tar.xz
 Source1:    scummvm.xpolicy
 Source2:    scummvm.ini
+Source3:    icon-launcher-scummvm.svg
 Patch1:     0001-slash-separated-id.patch
 Patch2:     0002-adapt-define-in-header.patch
 Patch3:     0003-desktop.patch
@@ -59,6 +60,8 @@ BuildRequires:  curl
 %ifarch %ix86
 BuildRequires: nasm
 %endif
+
+BuildRequires:  sailfish-svg2png
 
 BuildRequires:  giflib-devel
 BuildRequires:  pkgconfig(libcurl)
@@ -393,6 +396,14 @@ cp dists/sailfish/172x172.png %{buildroot}/usr/share/icons/hicolor/172x172/apps/
 
 cp dists/sailfish/org.scummvm.scummvm.desktop %{buildroot}/usr/share/applications/org.scummvm.scummvm.desktop
 
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
+cp %{S:3} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
+# generate png icons
+for size in 86 108 128 172 256 512 1024; do
+install -d %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/
+sailfish_svg2png -z 1.0 -f rgba -s 1 1 1 1 1 1 ${size} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/ %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/
+done
+
 mkdir -p %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/
 cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 
@@ -410,7 +421,7 @@ mv %{buildroot}%{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2 %{buildroot}%{_da
 %{_datadir}/applications/*.desktop
 %config(noreplace) %{_sysconfdir}/scummvm/scummvm.ini
 %config %{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
-#%%{_datadir}/icons/hicolor/scalable/apps/*svg
+%{_datadir}/icons/hicolor/scalable/apps/*svg
 %{_datadir}/icons/hicolor/*/apps/*.png
 %exclude %{_datadir}/%{orgname}/applications/org.scummvm.scummvm.desktop
 %exclude %{_datadir}/%{orgname}/icons/hicolor/scalable/apps/org.scummvm.scummvm.svg
