@@ -47,8 +47,7 @@ Source1:    scummvm.xpolicy
 Source2:    scummvm.ini
 Patch1:     0001-slash-separated-id.patch
 Patch2:     0002-adapt-define-in-header.patch
-Patch3:     0003-desktop-sailjail.patch
-Patch4:     0004-desktop-inifile.patch
+Patch3:     0003-desktop.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
