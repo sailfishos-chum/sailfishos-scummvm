@@ -21,7 +21,7 @@
 
 # in order to quickly test building, make a lighter config via macro:
 %if 0%{?scummvm_quick:1}
-%define engine_config --disable-all-engines --enable-engine-static=scumm --enable-engine-dynamic=sky --builtin-resources
+%define engine_config --disable-all-engines --enable-engine-static=scumm --enable-engine-dynamic=sky
 %endif
 
 %global orgname org.scummvm.scummvm
