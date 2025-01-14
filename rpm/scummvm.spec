@@ -397,8 +397,18 @@ cp dists/sailfish/172x172.png %{buildroot}/usr/share/icons/hicolor/172x172/apps/
 
 cp dists/sailfish/org.scummvm.scummvm.desktop %{buildroot}/usr/share/applications/org.scummvm.scummvm.desktop
 
+wd=$(date +%u) # 1-7
+chosen=%{S:3}
+if [ $wd -le 2 ]; then
+chosen=icon-launcher-scummvm-residual.svg
+elif [ $wd -le 4 ]; then
+chosen=icon-launcher-scummvm-retro.svg
+elif [ $wd -le 6 ]; then
+chosen=icon-launcher-scummvm-scummvm.svg
+fi
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
-cp %{S:3} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
+cp $chosen %%{buildroot}%{_datadir}/icons/hicolor/scalable/apps/icon-launcher-scummvm.svg
+
 # generate png icons
 for size in 86 108 128 172 256 512 1024; do
 install -d %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/
