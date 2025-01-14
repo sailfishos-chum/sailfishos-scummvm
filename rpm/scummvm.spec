@@ -386,15 +386,6 @@ rm -rf %{buildroot}%{_mandir}
 rm -rf %{buildroot}%{_datadir}/%{orgname}/doc
 
 mkdir -p %{buildroot}/usr/share/applications
-mkdir -p %{buildroot}/usr/share/icons/hicolor/86x86/apps
-mkdir -p %{buildroot}/usr/share/icons/hicolor/108x108/apps
-mkdir -p %{buildroot}/usr/share/icons/hicolor/128x128/apps
-mkdir -p %{buildroot}/usr/share/icons/hicolor/172x172/apps
-cp dists/sailfish/86x86.png   %{buildroot}/usr/share/icons/hicolor/86x86/apps/org.scummvm.scummvm.png
-cp dists/sailfish/108x108.png %{buildroot}/usr/share/icons/hicolor/108x108/apps/org.scummvm.scummvm.png
-cp dists/sailfish/128x128.png %{buildroot}/usr/share/icons/hicolor/128x128/apps/org.scummvm.scummvm.png
-cp dists/sailfish/172x172.png %{buildroot}/usr/share/icons/hicolor/172x172/apps/org.scummvm.scummvm.png
-
 cp dists/sailfish/org.scummvm.scummvm.desktop %{buildroot}/usr/share/applications/org.scummvm.scummvm.desktop
 
 wd=$(date +%u) # 1-7
