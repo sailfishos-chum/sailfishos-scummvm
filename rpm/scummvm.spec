@@ -332,6 +332,7 @@ Roland SC-55 soundfont from ScummVM
 
 Title: Roland SC-55 MIDI SoundFont
 Type: desktop-application
+DeveloperName: deemster
 Categories:
   - Audio
 %endif
@@ -519,5 +520,6 @@ mv %{buildroot}%{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2 %{buildroot}%{_da
 
 %if "%{?vendor}" == "chum"
 %files -n soundfont-roland-sc55
+%license dists/soundfonts/COPYRIGHT.Roland_SC-55
 %{_datadir}/sounds/sf2/Roland_SC-55.sf2
 %endif
