@@ -19,6 +19,11 @@
 %define engine_config --disable-all-unstable-engines --disable-all-engines --disable-engine=%{disabled_engines} --enable-engine=%{sub_engines} --enable-engine-static=%{builtin_engines} --enable-engine-dynamic=%{dynamic_engines}
 #%%define engine_config %%{nil}
 
+# in order to quickly test building, make a lighter config via macro:
+%if 0%{?scummvm_quick:1}
+%define engine_config --disable-all-engines --enable-engine-static=scumm --enable-engine-dynamic=sky --builtin-resources
+%endif
+
 %global orgname org.scummvm.scummvm
 
 # upstream sailfishos build recipe uses
@@ -375,7 +380,17 @@ Categories:
 #--enable-scummvmdlc \
 %{nil}
 
+%if "%{?scummvm_quick}" == "die-configure"
+echo EXITING ON QUICK BUILD REQUEST
+exit 1
+%endif
+
 %make_build
+
+%if "%{?scummvm_quick}" == "die-build"
+echo EXITING ON QUICK BUILD REQUEST
+exit 1
+%endif
 
 %install
 %make_install
