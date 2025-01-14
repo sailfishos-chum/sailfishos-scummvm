@@ -104,7 +104,8 @@ BuildRequires: pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(libmpeg2)
 BuildRequires:  pkgconfig(libmikmod)
-BuildRequires:  pkgconfig(fluidsynth)
+#BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(fluidlite)
 %endif
 
 Requires:   scummvm-data
@@ -375,6 +376,8 @@ Categories:
 --disable-gtk \
 --disable-discord \
 --disable-enet \
+--disable-fluidsynth \
+--enable-fluidlite \
 %{engine_config} \
 %{config_opts_ext} \
 #--enable-dlc \
