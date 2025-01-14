@@ -141,7 +141,7 @@ Categories:
   - Emulator
 Custom:
   - Repo: https://github.com/scummvm/scummvm
-PackageIcon: https://scummvm.org/images/scummvm_logo.png
+PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-scummvm.svg
 Screenshots:
   - https://scummvm.org/data/screenshots/scumm/loom/loom_amiga_en_1_1_full.png
   - https://scummvm.org/data/screenshots/scumm/maniac/maniac_amiga_en_1_3_full.png
@@ -173,7 +173,7 @@ Type: addon
 Categories:
   - Game
   - Emulator
-PackageIcon: https://scummvm.org/images/scummvm_logo.png
+PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-retro2.svg
 %endif
 
 %package engines-i
@@ -192,7 +192,7 @@ Type: desktop-application
 Categories:
   - Game
   - Emulator
-PackageIcon: https://scummvm.org/images/scummvm_logo.png
+PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-residual.svg
 Screenshots:
   - https://scummvm.org/data/screenshots/grim/grim/grim_win_en_1_2_full.png
   - https://scummvm.org/data/screenshots/kyra/kyra1/kyra1_dos_en_1_1_full.png
@@ -219,7 +219,7 @@ Type: desktop-application
 Categories:
   - Game
   - Emulator
-PackageIcon: https://scummvm.org/images/scummvm_logo.png
+PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-residual.svg
 Screenshots:
   - https://scummvm.org/data/screenshots/bladerunner/bladerunner/bladerunner_win_en_1_1_full.png
   - https://upload.wikimedia.org/wikipedia/en/2/2b/Dungeon_Master_Gameplay_Screenshot.png
@@ -247,7 +247,7 @@ Type: desktop-application
 Categories:
   - Game
   - Emulator
-PackageIcon: https://scummvm.org/images/scummvm_logo.png
+PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-residual.svg
 Screenshots:
   - https://scummvm.org/data/screenshots/sword1/sword1/sword1_win_de_1_3_full.png
   - https://scummvm.org/data/screenshots/sword25/sword25/sword25_win_de_1_10_full.png
@@ -273,7 +273,7 @@ Type: desktop-application
 Categories:
   - Game
   - Emulator
-PackageIcon: https://scummvm.org/images/scummvm_logo.png
+PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-residual.svg
 Screenshots:
   - https://scummvm.org/data/screenshots/toltecs/toltecs/toltecs_dos_en_1_6_full.png
   - https://scummvm.org/data/screenshots/sherlock/rosetattoo/rosetattoo_dos_de_1_13_full.png
@@ -297,7 +297,7 @@ Type: desktop-application
 Categories:
   - Game
   - Emulator
-PackageIcon: https://scummvm.org/images/scummvm_logo.png
+PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-residual.svg
 Screenshots:
   - https://scummvm.org/data/screenshots/ultima/ultima4/ultima4_dos_en_1_1_full.png
   - https://scummvm.org/data/screenshots/ultima/ultima6/ultima6_dos_en_1_2_full.png
@@ -315,7 +315,7 @@ Chinese, Japanese, and Korean fonts for ScummVM
 %if "%{?vendor}" == "chum"
 Title: ScummVM CJK Fonts
 Type: addon
-PackageIcon: https://scummvm.org/images/scummvm_logo.png
+PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-retro-gr.svg
 Categories:
   - Game
   - Emulator
