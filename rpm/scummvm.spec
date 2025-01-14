@@ -19,6 +19,15 @@
 %define engine_config --disable-all-unstable-engines --disable-all-engines --disable-engine=%{disabled_engines} --enable-engine=%{sub_engines} --enable-engine-static=%{builtin_engines} --enable-engine-dynamic=%{dynamic_engines}
 #%%define engine_config %%{nil}
 
+# in order to quickly test building, make a lighter config via macro:
+# You can set this to one of the following:
+# - "configure-help" to print configure --help output
+# - "die-configure"" to stop the build after the confgure phase
+# - "die-build" to stop the build after compiling
+%if 0%{?scummvm_quick:1}
+%define engine_config --disable-all-engines --enable-engine-static=scumm --enable-engine-dynamic=sky
+%endif
+
 %global orgname org.scummvm.scummvm
 
 # upstream sailfishos build recipe uses
@@ -342,7 +351,12 @@ Categories:
 %autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
-#%%configure --help
+%if 0%{?scummvm_quick:1}
+echo QUICK BUILD REQUEST. Defined minimal engine config. Packaging will likely fail.
+%endif
+%if "%{?scummvm_quick}" == "configure-help"
+%configure --help
+%endif
 
 ./configure \
 --prefix=%{_prefix} --exec-prefix=%{_prefix} \
@@ -376,7 +390,17 @@ Categories:
 #--enable-scummvmdlc \
 %{nil}
 
+%if "%{?scummvm_quick}" == "die-configure"
+echo EXITING ON QUICK BUILD REQUEST. This was caused by the %%scummvm_quick macro.
+exit 1
+%endif
+
 %make_build
+
+%if "%{?scummvm_quick}" == "die-build"
+echo EXITING ON QUICK BUILD REQUEST. This was caused by the %%scummvm_quick macro.
+exit 1
+%endif
 
 %install
 %make_install
