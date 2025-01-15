@@ -394,10 +394,10 @@ echo QUICK BUILD REQUEST. Defined minimal engine config. Packaging will likely f
 --disable-discord \
 --disable-enet \
 --enable-scummvmdlc \
-%{engine_config} \
 %{config_opts_ext} \
-#--enable-dlc \
-%{nil}
+%{engine_config} \
+ | /usr/bin/tee configure_output.txt
+
 
 %if "%{?scummvm_quick}" == "die-configure"
 echo EXITING ON QUICK BUILD REQUEST. This was caused by the %%scummvm_quick macro.
@@ -472,6 +472,8 @@ if [ -r %{_logdir}/build.log ]; then
   cat %{_logdir}/build.log | sed -n "/$TOKEN1/,/$TOKEN2/p" | sed -e "/$TOKEN1/d" -e "/$TOKEN2/d" | sed 's/^\[.*\]//' >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 elif [ -r //.build.log ]; then
   cat //.build.log         | sed -n "/$TOKEN1/,/$TOKEN2/p" | sed -e "/$TOKEN1/d" -e "/$TOKEN2/d" | sed 's/^\[.*\]//' >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+elif [ -r configure_output.txt ]; then
+  cat configure_output.txt         | sed -n "/$TOKEN1/,/$TOKEN2/p" | sed -e "/$TOKEN1/d" -e "/$TOKEN2/d" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 else
   printf "\nCould not get more info, please refer to the build log.\n\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 fi
