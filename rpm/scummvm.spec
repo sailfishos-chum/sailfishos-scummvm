@@ -371,9 +371,7 @@ Categories:
 --disable-enet \
 %{engine_config} \
 %{config_opts_ext} \
-#--enable-dlc \
-#--enable-scummvmdlc \
-    | tee configure_output.txt \
+| tee configure_output.txt \
 %{nil}
 
 %make_build
