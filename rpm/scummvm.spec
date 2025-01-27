@@ -24,6 +24,7 @@
 # - "configure-help" to print configure --help output
 # - "die-configure"" to stop the build after the confgure phase
 # - "die-build" to stop the build after compiling
+# - "die-install" to stop the build after installing
 %if 0%{?scummvm_quick:1}
 %define engine_config --disable-all-engines --enable-engine-static=scumm --enable-engine-dynamic=sky
 %endif
@@ -441,6 +442,12 @@ cp %{S:2} %{buildroot}%{_sysconfdir}/scummvm/scummvm.ini
 mkdir -p %{buildroot}%{_datadir}/sounds/sf2
 mv %{buildroot}%{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2 %{buildroot}%{_datadir}/sounds/sf2/Roland_SC-55.sf2
 %endif
+
+%if "%{?scummvm_quick}" == "die-install"
+echo EXITING ON QUICK BUILD REQUEST. This was caused by the %%scummvm_quick macro.
+exit 1
+%endif
+
 
 %files
 %{_bindir}/*
