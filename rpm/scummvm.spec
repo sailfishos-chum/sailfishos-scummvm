@@ -13,6 +13,12 @@
 # separate packages because of size: ultima
 %define dynamic_engines %{engines_1},%{engines_2},%{engines_3},%{engines_4},ultima
 
+# replace commas with spaces for display (so we don't produce too long lines in descriptions
+%define engines_1_pretty %{expand:%(echo %{engines_1} | tr ',' ' ' )}
+%define engines_2_pretty %{expand:%(echo %{engines_2} | tr ',' ' ' )}
+%define engines_3_pretty %{expand:%(echo %{engines_3} | tr ',' ' ' )}
+%define engines_4_pretty %{expand:%(echo %{engines_4} | tr ',' ' ' )}
+
 # build almost everything:
 #%%define engine_config --disable-all-unstable-engines --disable-engine=%%{disabled_engines} --enable-engine-static=%%{builtin_engines}
 # build only defined:
@@ -128,13 +134,13 @@ This package has the following engines built-in: %{builtin_engines}.
 
 Other engines are packaged separately:
 
-Engines I:   %engines_1
+Engines I:   %engines_1_pretty
 
-Engines II:  %engines_2
+Engines II:  %engines_2_pretty
 
-Engines III: %engines_3
+Engines III: %engines_3_pretty
 
-Engines IV:  %engines_4
+Engines IV:  %engines_4_pretty
 
 Ultima engine
 
@@ -191,7 +197,7 @@ Summary:    Engine plugins for ScummVM
 Requires:   %{name} = %{version}-%{release}
 
 %description engines-i
-This package contains the following engine plugins: %{engines_1}
+This package contains the following engine plugins: %{engines_1_pretty}
 
 See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
@@ -217,7 +223,7 @@ Summary:    Engine plugins for ScummVM
 Requires:   %{name} = %{version}-%{release}
 
 %description engines-ii
-This package contains the following engine plugins: %{engines_2}
+This package contains the following engine plugins: %{engines_2_pretty}
 
 See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
@@ -245,7 +251,7 @@ Summary:    Engine plugins for ScummVM
 Requires:   %{name} = %{version}-%{release}
 
 %description engines-iii
-This package contains the following engine plugins: %{engines_3}
+This package contains the following engine plugins: %{engines_3_pretty}
 
 See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
@@ -271,7 +277,7 @@ Summary:    Engine plugins for ScummVM
 Requires:   %{name} = %{version}-%{release}
 
 %description engines-iv
-This package contains the following engine plugins: %{engines_4}
+This package contains the following engine plugins: %{engines_4_pretty}
 
 See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
