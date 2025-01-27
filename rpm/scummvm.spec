@@ -422,11 +422,11 @@ cp dists/sailfish/org.scummvm.scummvm.desktop %{buildroot}/usr/share/application
 wd=$(date +%u) # 1-7
 chosen=%{S:3}
 if [ $wd -le 2 ]; then
-chosen=%{_builddir}/%{name}-%{version}-%{release}/icons/svgs/icon-launcher-scummvm-residual.svg
+chosen=%{_builddir}/%{name}-%{version}/icons/svgs/icon-launcher-scummvm-residual.svg
 elif [ $wd -le 4 ]; then
-chosen=%{_builddir}/%{name}-%{version}-%{release}/icons/svgs/icon-launcher-scummvm-retro.svg
+chosen=%{_builddir}/%{name}-%{version}/icons/svgs/icon-launcher-scummvm-retro.svg
 elif [ $wd -le 6 ]; then
-chosen=%{_builddir}/%{name}-%{version}-%{release}/icons/svgs/icon-launcher-scummvm-scummvm.svg
+chosen=%{_builddir}/%{name}-%{version}/icons/svgs/icon-launcher-scummvm-scummvm.svg
 fi
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 cp $chosen %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/icon-launcher-scummvm.svg
