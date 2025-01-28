@@ -387,6 +387,7 @@ echo QUICK BUILD REQUEST. Defined minimal engine config. Packaging will likely f
 --disable-translation \
 --disable-fribidi \
 --disable-cloud \
+--disable-eventrecorder \
 --enable-text-console \
 --enable-bink \
 --disable-tremor \
