@@ -7,7 +7,7 @@
 # Split other engines and data up into packages
 # goal: ~5MB per package
 %define engines_1 grim,kyra,mm,lure,sky,queen
-%define engines_2 bladerunner,dm,drascula,gob,groovie,made,mohawk,myst3
+%define engines_2 ags,bladerunner,dm,drascula,gob,groovie,made,mohawk,myst3
 %define engines_3 saga,stark,sword1,sword2,sword25,tinsel,titanic,tsage,twine
 %define engines_4 glk,hugo,mads,sherlock,toltecs,wintermute,zvision
 # separate packages because of size: ultima
@@ -466,7 +466,7 @@ printf "Engines III: %{engines_3_pretty}\n" >> %{buildroot}%{_datadir}/%{orgname
 printf "Engines IV:  %{engines_4_pretty}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 printf "Ultima engine\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 printf "\nThe above will include the following sub-engines: %{sub_engines_pretty}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
-printf "\nSee https://wiki.scummvm.org/index.php?title=Engines for details about engines and game support.\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "\nSee https://wiki.scummvm.org/index.php?title=Engines for details about engines and game support.\n\n\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 
 TOKEN1="Engines..builtin.:"
 TOKEN2="Creating.engines\/engines.mk"
@@ -547,6 +547,7 @@ exit 1
 %{_datadir}/%{orgname}/scummvm/shaders/emi_*
 
 %files engines-ii
+%{_plugindir}/scummvm/libags.so
 %{_plugindir}/scummvm/libbladerunner.so
 %{_plugindir}/scummvm/libdm.so
 %{_plugindir}/scummvm/libdrascula.so
