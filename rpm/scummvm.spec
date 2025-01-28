@@ -391,10 +391,10 @@ echo QUICK BUILD REQUEST. Defined minimal engine config. Packaging will likely f
 --disable-gtk \
 --disable-discord \
 --disable-enet \
+--enable-scummvmdlc \
 %{engine_config} \
 %{config_opts_ext} \
 #--enable-dlc \
-#--enable-scummvmdlc \
 %{nil}
 
 %if "%{?scummvm_quick}" == "die-configure"
