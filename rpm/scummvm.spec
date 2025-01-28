@@ -469,14 +469,19 @@ printf "\nSee https://wiki.scummvm.org/index.php?title=Engines for details about
 TOKEN1="Engines..builtin.:"
 TOKEN2="Creating.engines\/engines.mk"
 if [ -r %{_logdir}/build.log ]; then
+  printf "Found a build log.\n\n"
   cat %{_logdir}/build.log | sed -n "/$TOKEN1/,/$TOKEN2/p" | sed -e "/$TOKEN1/d" -e "/$TOKEN2/d" | sed 's/^\[.*\]//' >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 elif [ -r //.build.log ]; then
+  printf "Found a build log.\n\n"
   cat //.build.log         | sed -n "/$TOKEN1/,/$TOKEN2/p" | sed -e "/$TOKEN1/d" -e "/$TOKEN2/d" | sed 's/^\[.*\]//' >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 elif [ -r configure_output.txt ]; then
+  printf "Found a configure log.\n\n"
   cat configure_output.txt         | sed -n "/$TOKEN1/,/$TOKEN2/p" | sed -e "/$TOKEN1/d" -e "/$TOKEN2/d" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 else
   printf "\nCould not get more info, please refer to the build log.\n\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 fi
+printf "Engine info file produced:\n" 
+cat %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt || :
 %endif
 
 %if "%{?scummvm_quick}" == "die-install"
