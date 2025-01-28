@@ -18,6 +18,7 @@
 %define engines_2_pretty %{expand:%(echo %{engines_2} | tr ',' ' ' )}
 %define engines_3_pretty %{expand:%(echo %{engines_3} | tr ',' ' ' )}
 %define engines_4_pretty %{expand:%(echo %{engines_4} | tr ',' ' ' )}
+%define sub_engines_pretty %{expand:%(echo %{sub_engines} | tr ',' ' ' )}
 
 # build almost everything:
 #%%define engine_config --disable-all-unstable-engines --disable-engine=%%{disabled_engines} --enable-engine-static=%%{builtin_engines}
@@ -456,14 +457,14 @@ mv %{buildroot}%{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2 %{buildroot}%{_da
 # Super duper hack on chum: read the log of our own build process:
 %if "%{?vendor}" == "chum"
 printf "This build of ScummVM includes the following engines:\n\n" > %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
-printf "The following engines are built-in: %{builtin_engines}." >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "These engines are built-in: %{builtin_engines}.\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 printf "These engines are packaged separately:\n\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
-printf "Engines I:   %{engines_1}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
-printf "Engines II:  %{engines_2}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
-printf "Engines III: %{engines_3}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
-printf "Engines IV:  %{engines_4}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "Engines I:   %{engines_1_pretty}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "Engines II:  %{engines_2_pretty}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "Engines III: %{engines_3_pretty}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "Engines IV:  %{engines_4_pretty}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 printf "Ultima engine\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
-printf "\nThe above will include the following sub-engines: %{sub_engines}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
+printf "\nThe above will include the following sub-engines: %{sub_engines_pretty}\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 printf "\nSee https://wiki.scummvm.org/index.php?title=Engines for details about engines and game support.\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 
 TOKEN1="Engines..builtin.:"
