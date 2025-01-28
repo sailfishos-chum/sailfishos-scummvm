@@ -386,7 +386,6 @@ echo QUICK BUILD REQUEST. Defined minimal engine config. Packaging will likely f
 --disable-system-dialogs \
 --disable-translation \
 --disable-fribidi \
---disable-cloud \
 --enable-text-console \
 --enable-bink \
 --disable-tremor \
@@ -394,6 +393,7 @@ echo QUICK BUILD REQUEST. Defined minimal engine config. Packaging will likely f
 --disable-gtk \
 --disable-discord \
 --disable-enet \
+--enable-dlc \
 --enable-scummvmdlc \
 %{config_opts_ext} \
 %{engine_config} \
