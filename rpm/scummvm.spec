@@ -65,6 +65,8 @@ Source3:    icon-launcher-scummvm.svg
 Patch1:     0001-slash-separated-id.patch
 Patch2:     0002-adapt-define-in-header.patch
 Patch3:     0003-desktop.patch
+# https://github.com/scummvm/scummvm/commit/0fe46dbebf4f89a6325f80316f189cb083589bd9.diff
+Patch4:     2.9.0-fix-build-scummvmcloud-0fe46dbe.diff
 
 BuildRequires:  autoconf
 BuildRequires:  automake
