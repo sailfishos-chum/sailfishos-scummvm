@@ -65,9 +65,7 @@ Source2:    scummvm.ini
 Source3:    icon-launcher-scummvm.svg
 Patch1:     0001-slash-separated-id.patch
 Patch2:     0002-adapt-define-in-header.patch
-Patch3:     0003-desktop.patch
-# https://github.com/scummvm/scummvm/commit/0fe46dbebf4f89a6325f80316f189cb083589bd9.diff
-Patch4:     2.9.0-fix-build-scummvmcloud-0fe46dbe.diff
+Patch3:     2.9.0-fix-build-scummvmcloud-0fe46dbe.diff
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -81,6 +79,7 @@ BuildRequires: nasm
 %endif
 
 BuildRequires:  sailfish-svg2png
+BuildRequires:  desktop-file-utils
 
 BuildRequires:  giflib-devel
 BuildRequires:  pkgconfig(libcurl)
@@ -447,6 +446,24 @@ cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 
 mkdir -p %{buildroot}%{_datadir}/%{orgname}/scummvm/
 cp %{S:2} %{buildroot}%{_datadir}/%{orgname}/scummvm/default.ini
+
+# Mangle the installed desktop file:
+desktop-file-edit \
+  --set-key=Exec --set-value="/usr/bin/org.scummvm.scummvm --initial-cfg=/usr/share/org.scummvm.scummvm/scummvm/default.ini" \
+  --set-icon=icon-launcher-scummvm \
+  %{buildroot}%{_datadir}/applications/org.scummvm.scummvm.desktop
+
+printf '\n[X-Sailjail]\n\
+Permissions=UserDirs;RemovableMedia;Internet;Audio\n\
+OrganizationName=org.scummvm\n\
+ApplicationName=scummvm\n'\
+>> %{buildroot}%{_datadir}/applications/org.scummvm.scummvm.desktop
+
+
+desktop-file-install --delete-original       \
+  --dir %{buildroot}%{_datadir}/applications \
+  %{buildroot}%{_datadir}/applications/*.desktop
+
 
 %if "%{?vendor}" == "chum"
 # built when FluidSynth was found:
