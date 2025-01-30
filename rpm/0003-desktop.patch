@@ -8,7 +8,7 @@ index 9d4f4f03..4f1a8eab 100644
  Comment[ca]=Intèrpret per diverses aventures gràfiques
 -Exec=/usr/bin/org.scummvm.scummvm
 -Icon=org.scummvm.scummvm
-+Exec=/usr/bin/org.scummvm.scummvm -initial-cfg=/etc/scummvm/scummvm.ini
++Exec=/usr/bin/org.scummvm.scummvm --initial-cfg=/usr/share/org.scummvm.scummvm/scummvm/default.ini
 +Icon=icon-launcher-scummvm
  Type=Application
  Categories=Game;AdventureGame;

@@ -445,9 +445,8 @@ done
 mkdir -p %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/
 cp %{S:1} %{buildroot}%{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 
-
-mkdir -p %{buildroot}%{_sysconfdir}/scummvm/
-cp %{S:2} %{buildroot}%{_sysconfdir}/scummvm/scummvm.ini
+mkdir -p %{buildroot}%{_datadir}/%{orgname}/scummvm/
+cp %{S:2} %{buildroot}%{_datadir}/%{orgname}/scummvm/default.ini
 
 %if "%{?vendor}" == "chum"
 # built when FluidSynth was found:
@@ -496,7 +495,7 @@ exit 1
 %files
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
-%config(noreplace) %{_sysconfdir}/scummvm/scummvm.ini
+%config(noreplace) %{_datadir}/%{orgname}/scummvm/default.ini
 %config %{_sysconfdir}/pulse/xpolicy.conf.d/scummvm.conf
 %{_datadir}/icons/hicolor/scalable/apps/*svg
 %{_datadir}/icons/hicolor/*/apps/*.png
