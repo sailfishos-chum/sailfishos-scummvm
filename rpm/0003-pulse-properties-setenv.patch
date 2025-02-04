@@ -1,0 +1,13 @@
+diff --git a/backends/platform/sdl/sailfish/sailfish.cpp b/backends/platform/sdl/sailfish/sailfish.cpp
+index 4022ac38..fc9c8851 100644
+--- a/backends/platform/sdl/sailfish/sailfish.cpp
++++ b/backends/platform/sdl/sailfish/sailfish.cpp
+@@ -42,6 +42,8 @@
+ 
+ void OSystem_SDL_Sailfish::init() {
+ 	setenv("SDL_VIDEO_WAYLAND_WMCLASS", "org.scummvm.scummvm", 1);
++	setenv("PULSE_PROP_application.name", "ScummVM", 1);
++	setenv("PULSE_PROP_media.role", "x-maemo", 1);
+ 	// Initialze File System Factory
+ 	_fsFactory = new POSIXFilesystemFactory();
+ 
