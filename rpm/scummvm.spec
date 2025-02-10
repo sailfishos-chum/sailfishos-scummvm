@@ -454,9 +454,9 @@ desktop-file-edit \
   --set-icon=icon-launcher-scummvm \
   %{buildroot}%{_datadir}/applications/org.scummvm.scummvm.desktop
 
-printf '\n[X-Sailjail]\n\
-Permissions=UserDirs;RemovableMedia;Internet;Audio\n\
-OrganizationName=org.scummvm\n\
+printf '\n[X-Sailjail]
+Permissions=UserDirs;RemovableMedia;Internet;Audio
+OrganizationName=org.scummvm
 ApplicationName=scummvm\n'\
 >> %{buildroot}%{_datadir}/applications/org.scummvm.scummvm.desktop
 
