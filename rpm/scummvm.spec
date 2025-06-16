@@ -10,14 +10,16 @@
 %define engines_2 ags,bladerunner,dm,drascula,gob,groovie,made,mohawk,myst3
 %define engines_3 saga,stark,sword1,sword2,sword25,tinsel,titanic,tsage,twine
 %define engines_4 glk,hugo,mads,sherlock,toltecs,wintermute,zvision
+%define engines_5 awe
 # separate packages because of size: ultima
-%define dynamic_engines %{engines_1},%{engines_2},%{engines_3},%{engines_4},ultima
+%define dynamic_engines %{engines_1},%{engines_2},%{engines_3},%{engines_4},%{engines_5},ultima
 
 # replace commas with spaces for display (so we don't produce too long lines in descriptions
 %define engines_1_pretty %{expand:%(echo %{engines_1} | tr ',' ' ' )}
 %define engines_2_pretty %{expand:%(echo %{engines_2} | tr ',' ' ' )}
 %define engines_3_pretty %{expand:%(echo %{engines_3} | tr ',' ' ' )}
 %define engines_4_pretty %{expand:%(echo %{engines_4} | tr ',' ' ' )}
+%define engines_5_pretty %{expand:%(echo %{engines_5} | tr ',' ' ' )}
 %define sub_engines_pretty %{expand:%(echo %{sub_engines} | tr ',' ' ' )}
 
 # build almost everything:
@@ -144,6 +146,8 @@ Engines II:  %engines_2_pretty
 Engines III: %engines_3_pretty
 
 Engines IV:  %engines_4_pretty
+
+Engines V:  %engines_4_pretty
 
 Ultima engine
 
@@ -297,6 +301,28 @@ Screenshots:
   - https://scummvm.org/data/screenshots/toltecs/toltecs/toltecs_dos_en_1_6_full.png
   - https://scummvm.org/data/screenshots/sherlock/rosetattoo/rosetattoo_dos_de_1_13_full.png
   - https://scummvm.org/data/screenshots/zvision/znemesis/znemesis_dos_de_1_13_full.png
+%endif
+
+%package engines-v
+Summary:    Engine plugins for ScummVM
+Requires:   %{name} = %{version}-%{release}
+
+%description engines-v
+This package contains the following engine plugins: %{engines_5_pretty}
+
+See https://wiki.scummvm.org/index.php?title=Engines for details about engines
+and game support.
+
+
+%if "%{?vendor}" == "chum"
+Title: ScummVM Engines V
+Type: desktop-application
+Categories:
+  - Game
+  - Emulator
+PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-residual.svg
+Screenshots:
+  - https://scummvm.org/data/screenshots/awe/anotherworld/anotherworld_dos_en_1_3_full.png
 %endif
 
 %package engines-ultima
@@ -603,6 +629,9 @@ exit 1
 %{_datadir}/%{orgname}/scummvm/hugo.dat
 %{_datadir}/%{orgname}/scummvm/wintermute.zip
 %{_datadir}/%{orgname}/scummvm/shaders/wme_*
+
+%files engines-v
+%{_plugindir}/scummvm/libawe.so
 
 %files engines-ultima
 %{_plugindir}/scummvm/libultima.so
