@@ -571,6 +571,7 @@ exit 1
 %{_datadir}/%{orgname}/scummvm/achievements.dat
 %{_datadir}/%{orgname}/scummvm/encoding.dat
 %{_datadir}/%{orgname}/scummvm/fonts.dat
+%{_datadir}/%{orgname}/scummvm/fonts-imgui.dat
 %{_datadir}/%{orgname}/scummvm/gui-icons.dat
 %{_datadir}/%{orgname}/scummvm/helpdialog.zip
 %{_datadir}/%{orgname}/scummvm/pred.dic
