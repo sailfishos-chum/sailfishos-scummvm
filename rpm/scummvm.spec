@@ -1,3 +1,10 @@
+# new version numbering scheme: YEAR.RELEASE.PATCH
+# see https://www.patreon.com/posts/new-milestone-in-149535385
+
+%define v_year    2026
+%define v_release 2
+%define v_patch   0
+
 %define disabled_engines testbed,playground3d,access
 # build most popular/famous engines into the binary:
 %define builtin_engines agi,agos,sci,scumm
@@ -57,7 +64,7 @@
 
 Name:       scummvm
 Summary:    An interpreter for graphic adventure games
-Version:    2.9.1
+Version:    %{v_year}.%{v_release}.%{v_patch}
 Release:    1
 License:    GPLv3+
 URL:        https://www.scummvm.org
@@ -69,6 +76,9 @@ Patch1:     0001-slash-separated-id.patch
 Patch2:     0002-adapt-define-in-header.patch
 Patch3:     0003-pulse-properties-setenv.patch
 #Patch4:     2.9.0-fix-build-scummvmcloud-0fe46dbe.diff
+
+# new version numbering scheme: YEAR.RELEASE.PATCH
+Obsoletes:    %{name} <= 2.9.1
 
 BuildRequires:  autoconf
 BuildRequires:  automake
