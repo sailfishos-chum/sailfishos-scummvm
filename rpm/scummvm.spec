@@ -9,7 +9,7 @@
 # build most popular/famous engines into the binary:
 %define builtin_engines agi,agos,sci,scumm
 # if --disable-all-engines is used, we need to enable sub engines manually:
-%define sub_engines scumm-7-8,he,agos2,sci32,groovie2,lol,eob,mm1,xeen,ihnm,ultima1,ultima4,ultima6,ultima8,cstime,myst,mystme,riven
+%define sub_engines scumm-7-8,he,agos2,sci32,groovie2,lol,eob,mm1,xeen,ihnm,ultima1,ultima4,ultima6,ultima8,cstime,myst,mystme,riven,monkey4
 
 # Split other engines and data up into packages
 # goal: ~5MB per package
@@ -596,6 +596,7 @@ exit 1
 %{_datadir}/%{orgname}/scummvm/kyra.dat
 %{_datadir}/%{orgname}/scummvm/lure.dat
 %{_datadir}/%{orgname}/scummvm/mm.dat
+%{_datadir}/%{orgname}/scummvm/monkey4-patch.m4b
 %{_datadir}/%{orgname}/scummvm/queen.tbl
 %{_datadir}/%{orgname}/scummvm/sky.cpt
 %{_datadir}/%{orgname}/scummvm/shaders/grim_*
