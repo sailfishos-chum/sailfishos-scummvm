@@ -2,7 +2,7 @@
 # see https://www.patreon.com/posts/new-milestone-in-149535385
 
 %define v_year    2026
-%define v_release 2
+%define v_release 3
 %define v_patch   0
 
 %define disabled_engines testbed,playground3d,access
