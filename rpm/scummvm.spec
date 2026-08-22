@@ -17,7 +17,7 @@
 %define engines_2 ags,bladerunner,dm,drascula,gob,groovie,made,mohawk,myst3
 %define engines_3 saga,stark,sword1,sword2,sword25,tinsel,titanic,tsage,twine
 %define engines_4 glk,hugo,mads,sherlock,toltecs,wintermute,zvision
-%define engines_5 awe,asylum
+%define engines_5 awe,asylum,twp
 # separate packages because of size: ultima
 %define dynamic_engines %{engines_1},%{engines_2},%{engines_3},%{engines_4},%{engines_5},ultima
 
@@ -158,7 +158,7 @@ Engines III: %engines_3_pretty
 
 Engines IV:  %engines_4_pretty
 
-Engines V:  %engines_4_pretty
+Engines V:  %engines_5_pretty
 
 Ultima engine
 
@@ -646,6 +646,7 @@ exit 1
 %files engines-v
 %{_plugindir}/scummvm/libawe.so
 %{_plugindir}/scummvm/libasylum.so
+%{_plugindir}/scummvm/libtwp.so
 
 %files engines-ultima
 %{_plugindir}/scummvm/libultima.so
