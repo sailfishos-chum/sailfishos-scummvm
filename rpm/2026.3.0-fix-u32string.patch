@@ -1,0 +1,13 @@
+diff --git a/gui/downloaddlcsdialog.cpp b/gui/downloaddlcsdialog.cpp
+index 35c86dce2..2b6b2bcee 100644
+--- a/gui/downloaddlcsdialog.cpp
++++ b/gui/downloaddlcsdialog.cpp
+@@ -133,7 +133,7 @@ void DownloadDLCsDialog::handleTickle() {
+ 		}
+ 	}
+ 
+-	if (_errorLabel->getLabel() != DLCMan._errorText) {
++	if (_errorLabel->getLabel() != Common::U32String(DLCMan._errorText)) {
+ 		_errorLabel->setLabel(DLCMan._errorText);
+ 		g_gui.scheduleTopDialogRedraw();
+ 	}

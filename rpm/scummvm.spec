@@ -76,6 +76,7 @@ Patch1:     0001-slash-separated-id.patch
 Patch2:     0002-adapt-define-in-header.patch
 Patch3:     0003-pulse-properties-setenv.patch
 #Patch4:     2.9.0-fix-build-scummvmcloud-0fe46dbe.diff
+Patch263:   2026.3.0-fix-u32string.patch
 
 # new version numbering scheme: YEAR.RELEASE.PATCH
 Obsoletes:    %{name} <= 2.9.1
