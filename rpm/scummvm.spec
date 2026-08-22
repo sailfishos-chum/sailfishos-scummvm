@@ -126,7 +126,7 @@ BuildRequires: pkgconfig(wayland-scanner)
 BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(libpulse-simple)
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(libmpeg2)
 BuildRequires:  pkgconfig(libmikmod)
@@ -165,7 +165,7 @@ See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
 
 # https://github.com/sailfishos-chum/main/blob/main/Metadata.md
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 Title: ScummVM
 Type: desktop-application
 PackagedBy: nephros
@@ -193,14 +193,14 @@ Links:
 Summary:   Core data files for ScummVM
 BuildArch: noarch
 Requires:   %{name} = %{version}-%{release}
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 Requires:   soundfont-roland-sc55
 %endif
 
 %description data
 %{summary}.
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 Title: ScummVM Data
 Type: addon
 Categories:
@@ -219,7 +219,7 @@ This package contains the following engine plugins: %{engines_1_pretty}
 See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 Title: ScummVM Engines I
 Type: desktop-application
 Categories:
@@ -246,7 +246,7 @@ See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
 
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 Title: ScummVM Engines II
 Type: desktop-application
 Categories:
@@ -274,7 +274,7 @@ See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
 
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 Title: ScummVM Engines III
 Type: desktop-application
 Categories:
@@ -300,7 +300,7 @@ See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
 
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 Title: ScummVM Engines IV
 Type: desktop-application
 Categories:
@@ -324,7 +324,7 @@ See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
 
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 Title: ScummVM Engines V
 Type: desktop-application
 Categories:
@@ -346,7 +346,7 @@ See https://wiki.scummvm.org/index.php?title=Engines for details about engines
 and game support.
 
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 Title: ScummVM Ultima Engine
 Type: desktop-application
 Categories:
@@ -367,7 +367,7 @@ Requires:   %{name} = %{version}-%{release}
 %description fonts-cjk
 Chinese, Japanese, and Korean fonts for ScummVM
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 Title: ScummVM CJK Fonts
 Type: addon
 PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-retro-gr.svg
@@ -377,7 +377,7 @@ Categories:
 %endif
 
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 %package -n soundfont-roland-sc55
 Summary:   Roland SC-55 MIDI SoundFont from ScummVM
 BuildArch: noarch
@@ -502,7 +502,7 @@ desktop-file-install --delete-original       \
   %{buildroot}%{_datadir}/applications/*.desktop
 
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 # built when FluidSynth was found:
 mkdir -p %{buildroot}%{_datadir}/sounds/sf2
 mv %{buildroot}%{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2 %{buildroot}%{_datadir}/sounds/sf2/Roland_SC-55.sf2
@@ -510,7 +510,7 @@ mv %{buildroot}%{_datadir}/%{orgname}/scummvm/Roland_SC-55.sf2 %{buildroot}%{_da
 
 
 # Super duper hack on chum: read the log of our own build process:
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 printf "This build of ScummVM includes the following engines:\n\n" > %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 printf "These engines are built-in: %{builtin_engines}.\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 printf "These engines are packaged separately:\n\n" >> %{buildroot}%{_datadir}/%{orgname}/scummvm/built_engines_info.txt
@@ -558,7 +558,7 @@ exit 1
 %exclude %{_datadir}/%{orgname}/metainfo/org.scummvm.scummvm.metainfo.xml
 %exclude %{_datadir}/%{orgname}/pixmaps/org.scummvm.scummvm.xpm
 %dir %{_plugindir}/scummvm/
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 %{_datadir}/%{orgname}/scummvm/built_engines_info.txt
 %endif
 
@@ -654,7 +654,7 @@ exit 1
 %files fonts-cjk
 %{_datadir}/%{orgname}/scummvm/fonts-cjk.dat
 
-%if "%{?vendor}" == "chum"
+%if 0%{?_chum}
 %files -n soundfont-roland-sc55
 %license dists/soundfonts/COPYRIGHT.Roland_SC-55
 %{_datadir}/sounds/sf2/Roland_SC-55.sf2
