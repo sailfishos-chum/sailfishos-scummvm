@@ -175,6 +175,9 @@ Categories:
   - Emulator
 Custom:
   - Repo: https://github.com/scummvm/scummvm
+AIRating: B
+AINote: Upstream allows certain AI-assisted contributions. No Vibe, no Slop.
+AINoteMD: https://raw.githubusercontent.com/scummvm/scummvm/refs/heads/master/AI-GUIDELINES.md
 PackageIcon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-scummvm/refs/heads/master/icons/svgs/icon-launcher-scummvm-scummvm.svg
 Screenshots:
   - https://scummvm.org/data/screenshots/scumm/loom/loom_amiga_en_1_1_full.png
